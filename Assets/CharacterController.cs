@@ -1,14 +1,20 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    float maxSpeed = 3.0f; 
+    float maxSpeed = 1.5f; 
     float rotation = 0.0f; 
     float camRotation = 0.0f; 
     GameObject cam; 
     Rigidbody myRigidbody; 
+    public float jumpForce = 500.0f;
+
+    bool isOnGround;
+    public GameObject groundChecker; 
+    public LayerMask groundLayer; 
 
     float rotationSpeed = 2.0f; 
     float camRotationSpeed = 1.5f; 
@@ -22,6 +28,12 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.5f, groundLayer); 
+
+        if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
+        { 
+            myRigidbody.AddForce(transform.up * jumpForce); 
+        }   
         Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed; 
         myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z); 
 
