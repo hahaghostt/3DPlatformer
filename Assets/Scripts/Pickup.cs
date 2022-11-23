@@ -23,6 +23,7 @@ public class Pickup : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && isinside == true)
+            
         {
 
             Destroy(gameObject);
