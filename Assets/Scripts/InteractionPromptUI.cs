@@ -6,6 +6,8 @@ public class InteractionPromptUI : MonoBehaviour
 {
     private Camera _mainCam;
     [SerializeField] private GameObject _uiPanel;
+
+    public Pickup output_of; 
   
 
     private void Start()
@@ -16,6 +18,9 @@ public class InteractionPromptUI : MonoBehaviour
 
     private void LateUpdate()
     {
+
+        IsDisplayed = output_of.isinside;
+
         var rotation = _mainCam.transform.rotation;
         transform.LookAt(transform.position + rotation * Vector3.forward, 
             rotation * Vector3.up);
