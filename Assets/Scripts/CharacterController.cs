@@ -20,6 +20,9 @@ public class CharacterController : MonoBehaviour
     float sprintTimer; 
     private float newVelocity = 1.0f; 
 
+    private Animator mAnimator; 
+    
+
 
 
 
@@ -29,22 +32,30 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     { 
+
         sprintTimer = maxSprint; 
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>(); 
+        mAnimator = GetComponent<Animator>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.5f, groundLayer); 
+        mAnimator.SetBool("isOnGround", isOnGround);
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
         { 
+            mAnimator.SetTrigger("Jumped"); 
             myRigidbody.AddForce(transform.up * jumpForce); 
         }   
         Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed; 
+
+        mAnimator.SetFloat("Speed", newVelocity.magnitude);
+
         myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z); 
 
         if (Input.GetKey(KeyCode.LeftShift) && sprintTimer > 0.0f)
