@@ -22,10 +22,10 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.594
+    value: 0.698
   fastMode:
     overrideState: 1
-    value: 0
+    value: 1
 --- !u!114 &-2748851540995221565
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -211,7 +211,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.1
+    value: 0.02
   threshold:
     overrideState: 1
     value: 1
