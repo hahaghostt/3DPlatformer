@@ -31,8 +31,7 @@ public class CharacterController : MonoBehaviour
     public LayerMask groundLayer; 
 
     void Start()
-    { 
-
+    {
         sprintTimer = maxSprint; 
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>(); 
