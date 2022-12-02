@@ -17,9 +17,11 @@ public class ColorChanger : MonoBehaviour, IInteractable
         return "Collect Note";
     }
 
+
     public void Interact()
     {
         mat.color = new Color(Random.value, Random.value, Random.value);
         Destroy (gameObject);
     }
+    
 }

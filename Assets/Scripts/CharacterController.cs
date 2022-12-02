@@ -22,13 +22,13 @@ public class CharacterController : MonoBehaviour
 
     private Animator mAnimator; 
     
-
-
-
-
     bool isOnGround;
     public GameObject groundChecker; 
-    public LayerMask groundLayer; 
+    public LayerMask groundLayer;
+
+
+    public AudioClip backgroundMusic;
+    public AudioSource musicPlayer; 
 
     void Start()
     {
@@ -36,7 +36,9 @@ public class CharacterController : MonoBehaviour
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>(); 
         mAnimator = GetComponent<Animator>();
-        
+        musicPlayer.clip = backgroundMusic;
+        musicPlayer.loop = true;
+        musicPlayer.Play(); 
     }
 
     // Update is called once per frame
