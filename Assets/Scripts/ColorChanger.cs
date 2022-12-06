@@ -6,6 +6,8 @@ public class ColorChanger : MonoBehaviour, IInteractable
 {
 
     Material mat;
+    public AudioClip paper;
+    public AudioSource sfxPlayer; 
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class ColorChanger : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        sfxPlayer.Play(); 
         mat.color = new Color(Random.value, Random.value, Random.value);
         Destroy (gameObject);
     }
